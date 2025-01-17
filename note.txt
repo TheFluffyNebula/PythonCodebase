@@ -1,0 +1,25 @@
+some ideas:
+file i/o to generate the maps
+
+functions to implement:
+drawGrid (use calls to drawSquare with i & j loops)
+drawSquare(x, y, status)
+drawAgent(x, y) -- clears and redraws the agent in square (x, y)
+--secondary task--: replace movement with animation?
+
+plans for the agent:
+up, down left, right
+DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0)]
+UP = 0
+DOWN = 1
+LEFT = 2
+RIGHT = 3
+* make a class called directions so we can imitate directions.up/down/left/right?
+CLEAN = 4?
+agentOperation(direction)
+
+test automation:
+pass in string=s to function, with open(s) as fin:...
+
+
+---maintain extensibility for future problem sets?---

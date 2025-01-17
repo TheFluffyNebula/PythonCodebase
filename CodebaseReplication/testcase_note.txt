@@ -1,0 +1,8 @@
+input format:
+x y
+m n
+cells (grid)
+
+x and y describe the starting location
+m and n describing the dimensions of the grid
+the grid of integers describes the board states
