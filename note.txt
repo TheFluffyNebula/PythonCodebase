@@ -3,7 +3,7 @@ file i/o to generate the maps
 
 functions to implement:
 drawGrid (use calls to drawSquare with i & j loops)
-drawSquare(x, y, status)
+drawSquare(x, y, color)
 drawAgent(x, y) -- clears and redraws the agent in square (x, y)
 --secondary task--: replace movement with animation?
 
