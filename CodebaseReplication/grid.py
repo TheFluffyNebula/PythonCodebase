@@ -36,7 +36,7 @@ def drawGrid(rows, columns, board):
             if board[i][j] == 0:
                 color = "#000000"
             drawSquare(TOPLEFT_X + i * SQUARE_SIZE, TOPLEFT_Y + j * SQUARE_SIZE, color)
-
+    turtle.update()
 
 def drawSquare(x, y, color):
     turtle.up()
@@ -51,11 +51,12 @@ def drawSquare(x, y, color):
         turtle.right(90)
     turtle.end_fill()
 
-board = readFile("CodebaseReplication/PS1_Files/map1.txt")
-drawGrid(10, 10, board)
-turtle.update()
-
-screen.exitonclick()
+# if we press play from this file, the code below will run
+if __name__ == "__main__":
+    board = readFile("CodebaseReplication/PS1_Files/map1.txt")
+    drawGrid(10, 10, board)
+    # could go inside draw grid, then we could take it out of main
+    screen.exitonclick()
 
 '''
 functions: 

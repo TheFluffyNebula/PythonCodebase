@@ -21,5 +21,6 @@ agentOperation(direction)
 test automation:
 pass in string=s to function, with open(s) as fin:...
 
+config file to adjust parameters? then read in the file to adjust the global variables
 
 ---maintain extensibility for future problem sets?---
