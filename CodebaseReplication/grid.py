@@ -4,11 +4,17 @@
 # print(startX, startY)
 
 import turtle
+from enum import Enum
 
 class grid:
     TOPLEFT_X = -300
     TOPLEFT_Y = 0
     SQUARE_SIZE = 30
+
+    class TileStatus(Enum):
+        CLEAN = 0
+        DIRTY = 1
+        WALL = 2
 
     def __init__(self, filePath):
         # screen.bgcolor("#a5a5a5")

@@ -10,7 +10,7 @@ topLeftY = -topLeftX - grid.SQUARE_SIZE
 a = agent.agent(topLeftX, topLeftY, grid.SQUARE_SIZE, board)
 
 for i in range(200):
-    a.getAction()
+    a.move()
 
 nonWall = 0
 clean = 0

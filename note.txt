@@ -8,13 +8,13 @@ drawAgent(x, y) -- clears and redraws the agent in square (x, y)
 --secondary task--: replace movement with animation?
 
 plans for the agent:
-up, down left, right
-DIRECTIONS = [(0, 1), (0, -1), (-1, 0), (1, 0)]
-UP = 0
-DOWN = 1
-LEFT = 2
-RIGHT = 3
-* make a class called directions so we can imitate directions.up/down/left/right?
+left, right, up, down
+DIRECTIONS = [(0, -1), (0, 1), (0, -1), (0, 1)]
+LEFT = 0
+RIGHT = 1
+UP = 2
+DOWN = 3
+* make a class/enum called directions so we can imitate directions left/right/up/down?
 CLEAN = 4?
 agentOperation(direction)
 

@@ -1,7 +1,15 @@
 import turtle
+from enum import Enum
 
 class agent:
     AGENT_COLOR = "#70ad47"
+    class Action(Enum):
+        LEFT = 0
+        RIGHT = 1
+        UP = 2
+        DOWN = 3
+        CLEAN = 4
+        DO_NOTHING = 5
 
     def __init__(self, x, y, sqSize, grid):
         self.i = 0
@@ -35,8 +43,22 @@ class agent:
         aboveStatus = self.grid.getStatus(self.i - 1, self.j)
         belowStatus = self.grid.getStatus(self.i + 1, self.j)
 
-        # todo: convert getting an action into making a move, 
-        # thus updating the board with a new tile color or agent location
+        if curStatus == self.grid.TileStatus.DIRTY:
+            return self.Action.CLEAN
+        if leftStatus == self.grid.TileStatus.DIRTY:
+            return self.Action.LEFT
+        if rightStatus == self.grid.TileStatus.DIRTY:
+            return self.Action.RIGHT
+        if aboveStatus == self.grid.TileStatus.DIRTY:
+            return self.Action.UP
+        if belowStatus == self.grid.TileStatus.DIRTY:
+            return self.Action.DOWN
+        return self.Action.DO_NOTHING
+
+    def move(self):
+        action = self.getAction()
+        # if action == self.Action.CLEAN:
+
 
 
 # if we press play from this file, the code below will run
