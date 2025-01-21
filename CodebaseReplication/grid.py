@@ -18,6 +18,8 @@ class grid:
 
     def __init__(self, filePath):
         # screen.bgcolor("#a5a5a5")
+        turtle.speed(0)
+        turtle.tracer(0)
         with open (filePath) as fin:
             startX, startY = map(int, fin.readline().split())
             self.startX = startX

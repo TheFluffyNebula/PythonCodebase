@@ -3,11 +3,11 @@ import agent
 import turtle
 screen = turtle.Screen()
 
-board = grid.readFile("CodebaseReplication/PS1_Files/map1.txt")
-grid.drawGrid(10, 10, board)
-topLeftX = grid.TOPLEFT_X + (grid.SQUARE_SIZE / 2)
-topLeftY = -topLeftX - grid.SQUARE_SIZE
-a = agent.agent(topLeftX, topLeftY, grid.SQUARE_SIZE, board)
+board = grid.grid("CodebaseReplication/PS1_Files/map1.txt")
+board.drawGrid(10, 10)
+topLeftX = board.TOPLEFT_X + (board.SQUARE_SIZE / 2)
+topLeftY = -topLeftX - board.SQUARE_SIZE
+a = agent.agent(topLeftX, topLeftY, board.SQUARE_SIZE, board)
 
 for i in range(200):
     a.move()
@@ -15,12 +15,14 @@ for i in range(200):
 nonWall = 0
 clean = 0
 # TODO: make grid a class and have a method that counts tiles cleaned?
-for i in range(len(board)):
-    for j in range(len(board[0])):
-        if board[i][j] == 0:
+for i in range(board.rows):
+    for j in range(board.columns):
+        if board.getSquareStatus(i, j) == 0:
             clean += 1
+        if board.getSquareStatus(i, j) != 2:
+            nonWall += 1
 print(f"clean: {clean}/{nonWall}")
-print(f"percentage: {clean/nonWall}")
+print(f"% cleaned: {clean/nonWall}")
 
 
 screen.exitonclick()

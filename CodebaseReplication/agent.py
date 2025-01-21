@@ -37,11 +37,11 @@ class agent:
         self.t.end_fill()
 
     def getAction(self):
-        curStatus = self.grid.getStatus(self.i, self.j)
-        leftStatus = self.grid.getStatus(self.i, self.j - 1)
-        rightStatus = self.grid.getStatus(self.i, self.j + 1)
-        aboveStatus = self.grid.getStatus(self.i - 1, self.j)
-        belowStatus = self.grid.getStatus(self.i + 1, self.j)
+        curStatus = self.grid.getSquareStatus(self.i, self.j)
+        leftStatus = self.grid.getSquareStatus(self.i, self.j - 1)
+        rightStatus = self.grid.getSquareStatus(self.i, self.j + 1)
+        aboveStatus = self.grid.getSquareStatus(self.i - 1, self.j)
+        belowStatus = self.grid.getSquareStatus(self.i + 1, self.j)
 
         if curStatus == self.grid.TileStatus.DIRTY:
             return self.Action.CLEAN
