@@ -4,17 +4,13 @@
 # print(startX, startY)
 
 import turtle
-from enum import Enum
+from TileStatus import *
+from Colors import *
 
 class grid:
     TOPLEFT_X = -300
     TOPLEFT_Y = 0
     SQUARE_SIZE = 30
-
-    class TileStatus(Enum):
-        CLEAN = 0
-        DIRTY = 1
-        WALL = 2
 
     def __init__(self, filePath):
         # screen.bgcolor("#a5a5a5")
@@ -36,19 +32,25 @@ class grid:
         color = "filler"
         for i in range(rows):
             for j in range(columns):
-                if self.board[i][j] == 1:
-                    color = "#f4b083"
-                if self.board[i][j] == 2:
-                    color = "#000000"
-                self.drawSquare(self.TOPLEFT_X + i * self.SQUARE_SIZE, self.TOPLEFT_Y + j * self.SQUARE_SIZE, color)
+                color = self.board[i][j]
+                self.drawSquare(i, j, color)
         turtle.update()
 
-    def drawSquare(self, x, y, color):
+    def drawSquare(self, i, j, color):
         turtle.up()
-        turtle.goto(x, y)
+        xLoc = self.TOPLEFT_X + i * self.SQUARE_SIZE
+        yLoc = self.TOPLEFT_Y + j * self.SQUARE_SIZE
+        turtle.goto(xLoc, yLoc)
         turtle.seth(0)
         turtle.down()
-        turtle.fillcolor(color)
+        sColor = Colors.CLEAN
+        if color == TileStatus.CLEAN.value:
+            sColor = Colors.CLEAN
+        if color == TileStatus.DIRTY.value:
+            sColor = Colors.DIRTY
+        if color == TileStatus.WALL.value:
+            sColor = Colors.WALL
+        turtle.fillcolor(sColor.value)
         turtle.pencolor("#a5a5a5")
         turtle.begin_fill()
         for _ in range(4):

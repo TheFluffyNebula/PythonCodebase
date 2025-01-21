@@ -1,15 +1,11 @@
 import turtle
-from enum import Enum
+from Action import *
+from TileStatus import *
+from Colors import *
+import grid
 
 class agent:
     AGENT_COLOR = "#70ad47"
-    class Action(Enum):
-        LEFT = 0
-        RIGHT = 1
-        UP = 2
-        DOWN = 3
-        CLEAN = 4
-        DO_NOTHING = 5
 
     def __init__(self, x, y, sqSize, grid):
         self.i = 0
@@ -21,16 +17,13 @@ class agent:
         self.t = turtle.Turtle()
         self.grid = grid
 
-    def drawAgent(self, i, j):
-        # update the agent's coordinates
-        self.i = i
-        self.j = j
+    def drawAgent(self):
         # separate turtle to draw the agent
         self.t.clear()
         self.t.speed(0)
 
         self.t.up()
-        self.t.goto(self.initX + i * self.sqSize, self.initY - j * self.sqSize - self.AGENT_SIZE)
+        self.t.goto(self.initX + self.i * self.sqSize, self.initY - self.j * self.sqSize - self.AGENT_SIZE)
         self.t.fillcolor(self.AGENT_COLOR)
         self.t.begin_fill()
         self.t.circle(self.AGENT_SIZE)
@@ -43,22 +36,37 @@ class agent:
         aboveStatus = self.grid.getSquareStatus(self.i - 1, self.j)
         belowStatus = self.grid.getSquareStatus(self.i + 1, self.j)
 
-        if curStatus == self.grid.TileStatus.DIRTY:
-            return self.Action.CLEAN
-        if leftStatus == self.grid.TileStatus.DIRTY:
-            return self.Action.LEFT
-        if rightStatus == self.grid.TileStatus.DIRTY:
-            return self.Action.RIGHT
-        if aboveStatus == self.grid.TileStatus.DIRTY:
-            return self.Action.UP
-        if belowStatus == self.grid.TileStatus.DIRTY:
-            return self.Action.DOWN
-        return self.Action.DO_NOTHING
+        if curStatus == TileStatus.DIRTY:
+            return Action.CLEAN
+        if leftStatus == TileStatus.DIRTY:
+            return Action.LEFT
+        if rightStatus == TileStatus.DIRTY:
+            return Action.RIGHT
+        if aboveStatus == TileStatus.DIRTY:
+            return Action.UP
+        if belowStatus == TileStatus.DIRTY:
+            return Action.DOWN
+        return Action.DO_NOTHING
 
     def move(self):
         action = self.getAction()
-        # if action == self.Action.CLEAN:
-
+        if action == Action.CLEAN:
+            self.board.drawSquare(self.i, self.j, Colors.CLEAN)
+            # self.board[self.i][self.j] = 0
+            return
+        if action == Action.LEFT:
+            self.j -= 1
+        if action == Action.RIGHT:
+            self.j += 1
+        if action == Action.UP:
+            self.i -= 1
+        if action == Action.DOWN:
+            self.i += 1
+        if action == Action.DO_NOTHING:
+            return
+        # redraw the agent in its new position
+        self.drawAgent()
+        return
 
 
 # if we press play from this file, the code below will run
@@ -71,7 +79,8 @@ if __name__ == "__main__":
     turtle.goto(0, 100)
     turtle.goto(0, 0)
 
-    a = agent(50, 50, 30)
-    a.drawAgent(0, 0)
+    board = grid.grid("CodebaseReplication/PS1_Files/map1.txt")
+    a = agent(50, 50, 30, board)
+    a.drawAgent()
 
     screen.exitonclick()

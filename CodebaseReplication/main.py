@@ -9,7 +9,8 @@ topLeftX = board.TOPLEFT_X + (board.SQUARE_SIZE / 2)
 topLeftY = -topLeftX - board.SQUARE_SIZE
 a = agent.agent(topLeftX, topLeftY, board.SQUARE_SIZE, board)
 
-for i in range(200):
+for i in range(5):
+    print(i)
     a.move()
 
 nonWall = 0
