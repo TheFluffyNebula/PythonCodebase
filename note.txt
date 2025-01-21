@@ -23,4 +23,9 @@ pass in string=s to function, with open(s) as fin:...
 
 config file to adjust parameters? then read in the file to adjust the global variables
 
+tile coloring scheme:
+0 = clean
+1 = dirty
+2 = wall
+
 ---maintain extensibility for future problem sets?---
