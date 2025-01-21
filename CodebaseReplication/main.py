@@ -13,6 +13,8 @@ for i in range(5):
     print(i)
     a.move()
 
+board = a.grid
+print(board)
 nonWall = 0
 clean = 0
 # TODO: make grid a class and have a method that counts tiles cleaned?

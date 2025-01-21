@@ -66,7 +66,14 @@ class grid:
     def getSquareStatus(self, i, j):
         if self.out(i, j):
             return -1
-        return self.board[i][j]
+        val = self.board[i][j]
+        if val == 0:
+            return TileStatus.CLEAN
+        if val == 1:
+            return TileStatus.DIRTY
+        if val == 2:
+            return TileStatus.WALL
+        return -1
         
     def getCurrentStatus(self, i, j):
         return self.getSquareStatus(i, j)
@@ -78,6 +85,18 @@ class grid:
         return self.getSquareStatus(i - 1, j)
     def getBelowStatus(self, i, j):
         return self.getSquareStatus(i + 1, j)
+    
+    def clean(self, i, j):
+        self.board[i][j] == 0
+    
+    def __str__(self):
+        ret = []
+        for i in range(self.rows):
+            line = []
+            for j in range(self.columns):
+                line.append(str(self.board[i][j]))
+            ret.append("".join(line))
+        return '\n'.join(ret)
 
 # if we press play from this file, the code below will run
 if __name__ == "__main__":

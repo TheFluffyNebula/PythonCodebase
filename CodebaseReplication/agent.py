@@ -51,8 +51,8 @@ class agent:
     def move(self):
         action = self.getAction()
         if action == Action.CLEAN:
-            self.board.drawSquare(self.i, self.j, Colors.CLEAN)
-            # self.board[self.i][self.j] = 0
+            self.grid.clean(self.i, self.j)
+            self.grid.drawSquare(self.i, self.j, Colors.CLEAN)
             return
         if action == Action.LEFT:
             self.j -= 1
