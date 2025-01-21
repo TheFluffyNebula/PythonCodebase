@@ -1,4 +1,4 @@
----get the action to communicate with the grid (draw something new, etc)---
+add import time --> time.sleep() in between each iteration?
 
 hide the turtle(s) and set them to teleport during the iterations
     subtask for waaaay later: animation (visually move as in redraw every pixel the agent moves)

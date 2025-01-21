@@ -87,7 +87,8 @@ class grid:
         return self.getSquareStatus(i + 1, j)
     
     def clean(self, i, j):
-        self.board[i][j] == 0
+        self.board[i][j] = 0
+        # print(self.board[i][j])
     
     def __str__(self):
         ret = []

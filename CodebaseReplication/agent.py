@@ -40,12 +40,12 @@ class agent:
             return Action.CLEAN
         if leftStatus == TileStatus.DIRTY:
             return Action.LEFT
+        if belowStatus == TileStatus.DIRTY:
+            return Action.DOWN
         if rightStatus == TileStatus.DIRTY:
             return Action.RIGHT
         if aboveStatus == TileStatus.DIRTY:
             return Action.UP
-        if belowStatus == TileStatus.DIRTY:
-            return Action.DOWN
         return Action.DO_NOTHING
 
     def move(self):
