@@ -2,6 +2,7 @@ import grid
 import agent
 import turtle
 from TileStatus import *
+import time
 screen = turtle.Screen()
 
 board = grid.grid("CodebaseReplication/PS1_Files/map1.txt")
@@ -13,6 +14,8 @@ a = agent.agent(topLeftX, topLeftY, board.SQUARE_SIZE, board)
 for i in range(200):
     # print(i)
     a.move()
+    turtle.update()
+    time.sleep(0.05)
 
 board = a.grid
 print(board)

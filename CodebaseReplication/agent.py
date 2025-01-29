@@ -15,6 +15,7 @@ class agent:
         self.sqSize = sqSize
         self.AGENT_SIZE = sqSize / 3
         self.t = turtle.Turtle()
+        self.t.speed(0)
         self.grid = grid
 
     def drawAgent(self):
