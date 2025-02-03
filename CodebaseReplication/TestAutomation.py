@@ -9,7 +9,8 @@ import time
 class TestAutomation:
 
     # Quietly executes the environment
-    def executeEnv(self, testFile: pathlib.Path):
+    def executeEnv(self, testFile: str):
+        testFile = pathlib.Path(testFile)
         # Load in grid from files
         board = grid.grid(testFile)
         topLeftX = board.TOPLEFT_X + (board.SQUARE_SIZE / 2)
@@ -42,7 +43,8 @@ class TestAutomation:
 
     # Executes the environment with visualization
     # stolen from Jason lol
-    def executeEnvViz(self, testFile: pathlib.Path):
+    def executeEnvViz(self, testFile: str):
+        testFile = pathlib.Path(testFile)
         screen = turtle.Screen()
 
         board = grid.grid(testFile)
@@ -74,7 +76,8 @@ class TestAutomation:
         screen.exitonclick()
 
     # Executes all maps in the given folder path
-    def runAll(self, testFolder: pathlib.Path):
+    def runAll(self, testFolder: str):
+        testFolder = pathlib.Path(testFolder)
         if not testFolder.is_dir():
             print(fr"This isn't a folder ¯\_(ツ)_/¯\n{testFolder}")
             exit()
@@ -87,4 +90,5 @@ class TestAutomation:
 # run the test automation
 if __name__ == "__main__":
     automation = TestAutomation()
-    automation.executeEnv("CodebaseReplication/PS1_Files/map1.txt")
+    #automation.executeEnv("CodebaseReplication/PS1_Files/map1.txt")
+    automation.runAll("CodebaseReplication/PS1_Files/map1.txt")
