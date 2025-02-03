@@ -46,10 +46,12 @@ class grid:
         sColor = Colors.CLEAN
         if color == TileStatus.CLEAN.value:
             sColor = Colors.CLEAN
-        if color == TileStatus.DIRTY.value:
+        elif color == TileStatus.DIRTY.value:
             sColor = Colors.DIRTY
-        if color == TileStatus.WALL.value:
+        elif color == TileStatus.WALL.value:
             sColor = Colors.WALL
+        elif color == TileStatus.TARGET.value:
+            sColor = Colors.TARGET
         turtle.fillcolor(sColor.value)
         turtle.pencolor("#a5a5a5")
         turtle.begin_fill()
@@ -73,6 +75,8 @@ class grid:
             return TileStatus.DIRTY
         if val == 2:
             return TileStatus.WALL
+        if val == 3:
+            return TileStatus.TARGET
         return -1
         
     def getCurrentStatus(self, i, j):
